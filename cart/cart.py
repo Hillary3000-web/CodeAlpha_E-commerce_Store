@@ -45,9 +45,18 @@ class Cart:
         """
         Iterate over the items in the cart and get the products from the database.
         """
-        product_ids = self.cart.keys()
+        product_ids = list(self.cart.keys())
         # get the product objects and add them to the cart
         products = Product.objects.filter(id__in=product_ids)
+        
+        # Purge items from the session cart that no longer exist in the database
+        existing_ids = {str(product.id) for product in products}
+        orphans = [pid for pid in product_ids if pid not in existing_ids]
+        if orphans:
+            for pid in orphans:
+                del self.cart[pid]
+            self.save()
+
         cart = self.cart.copy()
         for product in products:
             cart[str(product.id)]['product'] = product
