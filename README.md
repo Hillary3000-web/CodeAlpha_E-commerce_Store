@@ -12,7 +12,6 @@ Welcome to **NexusStore**, a highly optimized, fully functional, and visually st
 
 ## 📸 Screenshots
 
-*(Replace these placeholders with your actual screenshots)*
 
 ### Home Page & Premium Hero Layout
 ![Home Page](screenshot-home.png)
