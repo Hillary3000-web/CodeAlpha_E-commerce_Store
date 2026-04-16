@@ -41,7 +41,6 @@
                         <form action="{% url 'cart:cart_add' product.id %}" method="post" class="product-add-to-cart">
                             {% csrf_token %}
                             <input type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="override" value="False">
                             <button type="submit" class="btn btn-outline" style="width: 100%;">Add to Cart</button>
                         </form>
                     </div>
